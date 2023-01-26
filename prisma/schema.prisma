@@ -9,11 +9,12 @@ datasource db {
 }
 
 model bills {
-  id    Int      @id @default(autoincrement())
-  name  String
-  value Int
-  date  DateTime @db.Date
-  paid  Boolean? @default(false)
+  id          Int       @id @default(autoincrement())
+  name        String
+  value       Int
+  date        DateTime  @db.Date
+  paid        Boolean?  @default(false)
+  paymentDate DateTime? @db.Date
 }
 
 model houseworks {
