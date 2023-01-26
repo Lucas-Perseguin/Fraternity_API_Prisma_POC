@@ -1,0 +1,35 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fieldReference"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model bills {
+  id    Int      @id @default(autoincrement())
+  name  String
+  value Int
+  date  DateTime @db.Date
+  paid  Boolean? @default(false)
+}
+
+model houseworks {
+  id          Int       @id(map: "houseworks_pk") @default(autoincrement())
+  name        String
+  description String
+  date        DateTime  @db.Date
+  responsible Int
+  done        Boolean?  @default(false)
+  completion  DateTime? @db.Date
+  residents   residents @relation(fields: [responsible], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "houseworks_fk0")
+}
+
+model residents {
+  id         Int          @id(map: "residents_pk") @default(autoincrement())
+  name       String       @unique(map: "resident_unique_name")
+  isActive   Boolean?     @default(true)
+  houseworks houseworks[]
+}
