@@ -78,7 +78,6 @@ export async function getHouseworks(
       return res.send(houserworks);
     }
   } catch (error) {
-    console.log(error);
     return res.sendStatus(500);
   }
 }
@@ -113,7 +112,7 @@ export async function editHousework(
   }
 }
 
-export async function delteHousework(
+export async function deleteHousework(
   req: Request,
   res: Response
 ): Promise<Response<HouseworkEntity>> {
@@ -124,7 +123,6 @@ export async function delteHousework(
       return res.status(404).send('The specified housework was not found');
     return res.send(housework);
   } catch (error) {
-    console.log(error);
     return res.sendStatus(500);
   }
 }
