@@ -78,6 +78,7 @@ export async function getHouseworks(
       return res.send(houserworks);
     }
   } catch (error) {
+    console.log(error);
     return res.sendStatus(500);
   }
 }

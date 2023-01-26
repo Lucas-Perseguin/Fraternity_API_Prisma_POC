@@ -35,7 +35,7 @@ export function selectDeliveredLateHouseworks(
             contains: `${name}`,
           }
         : undefined,
-      date: date ? `${date}` : undefined,
+      date: date ? new Date(`${date}`) : undefined,
       responsible: responsible ? Number(responsible) : undefined,
       NOT: {
         completion: null,
@@ -62,10 +62,10 @@ export function selectLateHouseworks(
       responsible: responsible ? Number(responsible) : undefined,
       completion: null,
       AND: [
-        { date: date ? `${date}` : undefined },
+        { date: date ? new Date(`${date}`) : undefined },
         {
           date: {
-            lt: `${Date.now()}`,
+            lt: new Date(Date.now()),
           },
         },
       ],
@@ -85,9 +85,9 @@ export function selectTodayHouseworks(
             contains: `${name}`,
           }
         : undefined,
-      done: done === 'true' ? true : false,
+      done: done ? (done === 'true' ? true : false) : undefined,
       responsible: responsible ? Number(responsible) : undefined,
-      date: `${Date.now()}`,
+      date: new Date(Date.now()),
     },
   });
 }
@@ -104,9 +104,9 @@ export function selectHouseworks(
             contains: `${name}`,
           }
         : undefined,
-      done: done === 'true' ? true : false,
+      done: done ? (done === 'true' ? true : false) : undefined,
       responsible: responsible ? Number(responsible) : undefined,
-      date: date ? `${date}` : undefined,
+      date: date ? new Date(`${date}`) : undefined,
     },
   });
 }
@@ -120,7 +120,7 @@ export function updateHouseworkCompletion(id: number): Promise<houseworks> {
     },
     data: {
       done: true,
-      completion: `${Date.now()}`,
+      completion: new Date(Date.now()),
     },
   });
 }

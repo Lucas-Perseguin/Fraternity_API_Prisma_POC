@@ -18,7 +18,7 @@ export function selectResidents(
             contains: `${name}`,
           }
         : undefined,
-      isActive: isActive === 'true' ? true : false,
+      isActive: isActive ? (isActive === 'true' ? true : false) : undefined,
     },
   });
 }

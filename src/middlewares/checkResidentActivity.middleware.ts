@@ -10,8 +10,8 @@ export default async function checkResidentActivity(
   try {
     const isActive = await selectUserActitivyById(Number(residentId));
 
-    if (!isActive.rowCount) return res.status(404).send('Resident not found');
-    else if (isActive.rows[0].isActive) return next();
+    if (!isActive) return res.status(404).send('Resident not found');
+    else if (isActive) return next();
     else return res.status(400).send('Resident is Inactive');
   } catch (error) {
     return res.sendStatus(500);
