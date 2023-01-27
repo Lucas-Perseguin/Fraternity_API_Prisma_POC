@@ -16,6 +16,7 @@ export function selectResidents(
       name: name
         ? {
             contains: `${name}`,
+            mode: 'insensitive',
           }
         : undefined,
       isActive: isActive ? (isActive === 'true' ? true : false) : undefined,

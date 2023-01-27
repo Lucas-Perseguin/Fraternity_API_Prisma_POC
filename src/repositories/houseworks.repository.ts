@@ -33,6 +33,7 @@ export function selectDeliveredLateHouseworks(
       name: name
         ? {
             contains: `${name}`,
+            mode: 'insensitive',
           }
         : undefined,
       date: date ? new Date(`${date}`) : undefined,
@@ -57,6 +58,7 @@ export function selectLateHouseworks(
       name: name
         ? {
             contains: `${name}`,
+            mode: 'insensitive',
           }
         : undefined,
       responsible: responsible ? Number(responsible) : undefined,
@@ -83,6 +85,7 @@ export function selectTodayHouseworks(
       name: name
         ? {
             contains: `${name}`,
+            mode: 'insensitive',
           }
         : undefined,
       done: done ? (done === 'true' ? true : false) : undefined,
@@ -102,6 +105,7 @@ export function selectHouseworks(
       name: name
         ? {
             contains: `${name}`,
+            mode: 'insensitive',
           }
         : undefined,
       done: done ? (done === 'true' ? true : false) : undefined,
