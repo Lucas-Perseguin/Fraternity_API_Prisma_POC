@@ -16,3 +16,9 @@ export const HouseworkEditModel = Joi.object({
   date: Joi.date(),
   responsible: Joi.number().min(1),
 });
+
+export const BillModel = Joi.object({
+  name: Joi.string().required(),
+  date: Joi.date().required(),
+  value: Joi.number().required(),
+});
